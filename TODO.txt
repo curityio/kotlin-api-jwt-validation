@@ -1,0 +1,6 @@
+1. Test behavior and include error responses
+   https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
+
+2. Fix warnings about Kotlin compiler and finalise the pom.xml file
+
+3. Write a brief HOWTO
