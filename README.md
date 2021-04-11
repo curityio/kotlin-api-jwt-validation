@@ -3,8 +3,8 @@
 [![Quality](https://img.shields.io/badge/quality-experiment-red)](https://curity.io/resources/code-examples/status/)
 [![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
 
-A basic sample to show how to use the jose4j library for managing JWT validation.\
-After validating the JWT, API routes then use scopes and claims when serving requests for data.
+A basic sample to show how to use the jose4j library for managing validation of OAuth (JWT) access tokens.\
+API routes can then use scopes and claims from the JWT to authorize requests.
 
 ## Documentation
 
