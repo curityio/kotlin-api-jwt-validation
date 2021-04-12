@@ -1,12 +1,5 @@
 package io.curity.example.secureapi
 
-import org.jose4j.jwa.AlgorithmConstraints
-import org.jose4j.jwk.HttpsJwks
-import org.jose4j.jws.AlgorithmIdentifiers
-import org.jose4j.jwt.consumer.InvalidJwtException
-import org.jose4j.jwt.consumer.JwtConsumerBuilder
-import org.jose4j.keys.resolvers.HttpsJwksVerificationKeyResolver
-import org.slf4j.LoggerFactory
 import javax.servlet.Filter
 import javax.servlet.FilterChain
 import javax.servlet.FilterConfig
@@ -14,6 +7,13 @@ import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+import org.jose4j.jwa.AlgorithmConstraints
+import org.jose4j.jwk.HttpsJwks
+import org.jose4j.jws.AlgorithmIdentifiers
+import org.jose4j.jwt.consumer.InvalidJwtException
+import org.jose4j.jwt.consumer.JwtConsumerBuilder
+import org.jose4j.keys.resolvers.HttpsJwksVerificationKeyResolver
+import org.slf4j.LoggerFactory
 import spark.Spark.halt
 
 /*

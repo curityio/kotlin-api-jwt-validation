@@ -3,7 +3,7 @@ package io.curity.example.secureapi
 import java.util.Properties
 
 /*
- * A simple configuration class
+ * A simple configuration class that reads the api.properties file
  */
 class Configuration {
 

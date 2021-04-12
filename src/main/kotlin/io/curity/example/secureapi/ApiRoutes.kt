@@ -1,7 +1,7 @@
 package io.curity.example.secureapi;
 
-import com.google.gson.Gson
 import org.jose4j.jwt.JwtClaims
+import com.google.gson.Gson
 import spark.Request;
 import spark.Response;
 

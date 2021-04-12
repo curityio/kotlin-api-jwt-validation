@@ -1,4 +1,5 @@
 package io.curity.example.secureapi
+
 import spark.Spark.before
 import spark.Spark.get
 import spark.Spark.port
