@@ -38,7 +38,7 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
 
             val jwt = this.getBearerToken(httpRequest)
             if (jwt.isEmpty()) {
-                _logger.info("No access token was received in the bearer header")
+                _logger.info("No access token was received in the authorization header")
                 this.unauthorizedResponse(httpResponse)
                 return
             }
@@ -90,7 +90,7 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
 
     private fun unauthorizedResponse(httpResponse: HttpServletResponse) {
 
-        httpResponse.setHeader("www-authenticate", "Bearer")
+        httpResponse.setHeader("www-authenticate", "Bearer, error=invalid_token, error_description=Access token is missing, invalid or expired")
         halt(401)
     }
 }
