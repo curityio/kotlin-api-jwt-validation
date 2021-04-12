@@ -16,10 +16,11 @@ class ApiRoutes {
     fun getData(request: Request, response: Response): String {
 
         val claims = request.attribute<JwtClaims>("principal")
+
         val role = claims.getClaimValueAsString("role")
         val scope = claims.getClaimValueAsString("scope")
 
-        val data = DataResponse("API Request has role '${role}' and scope '${scope}'")
+        val data = DataResponse("API Request has role: $role and scope: $scope")
         return Gson().toJson(data)
     }
 }

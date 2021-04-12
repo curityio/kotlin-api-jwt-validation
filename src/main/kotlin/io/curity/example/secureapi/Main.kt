@@ -1,5 +1,4 @@
 package io.curity.example.secureapi
-
 import spark.Spark.before
 import spark.Spark.get
 import spark.Spark.port
@@ -9,7 +8,7 @@ import spark.Spark.port
  */
 fun main() {
 
-    // Configure the Spark framework to use the Java property system
+    // Load configuration and configure the Spark port to listen on
     val configuration = Configuration()
     port(configuration.getPortNumber())
 

@@ -24,11 +24,11 @@ class Configuration {
         return _properties.getProperty("jwks_endpoint")
     }
 
-    fun getIssuer(): String {
+    fun getIssuerExpectedClaim(): String {
         return _properties.getProperty("issuer_claim")
     }
 
-    fun getAudience(): String {
+    fun getAudienceExpectedClaim(): String {
         return _properties.getProperty("audience_claim")
     }
 }
