@@ -22,9 +22,6 @@ import spark.Spark.halt
 class OAuthFilter(private val _configuration: Configuration) : Filter {
 
     private val _logger = LoggerFactory.getLogger(OAuthFilter::class.java)
-
-    // Point jose4j to the Authorization Server's JWKS endpoint
-    // Token signing keys are then cached and managed in a threadsafe manner
     private val _httpsJkws = HttpsJwks(_configuration.getJwksEndpoint())
     private val _httpsJwksKeyResolver = HttpsJwksVerificationKeyResolver(_httpsJkws)
 
@@ -39,7 +36,6 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
         try {
             _logger.debug("Authorization filter invoked for HTTP request")
 
-            // Try to read the access token from the authorization header and return a 401 if not supplied
             val jwt = this.getBearerToken(httpRequest)
             if (jwt.isEmpty()) {
                 _logger.info("No access token was received in the bearer header")
@@ -47,7 +43,6 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
                 return
             }
 
-            // Configure the jose4j library to download JWKS keys and verify the access token
             val jwtConsumer = JwtConsumerBuilder()
                 .setVerificationKeyResolver(_httpsJwksKeyResolver)
                 .setJwsAlgorithmConstraints(
@@ -58,12 +53,10 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
                 .setExpectedAudience(_configuration.getAudienceExpectedClaim())
                 .build()
 
-            // Do the validation, then store claims in the request object
             val jwtClaims = jwtConsumer.processToClaims(jwt)
             request.setAttribute("principal", jwtClaims)
             _logger.debug("JWT was successfully validated")
 
-            // Continue processing and run the API logic
             chain?.doFilter(request, response)
 
         } catch (e: InvalidJwtException) {

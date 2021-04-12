@@ -10,9 +10,6 @@ import spark.Response
  */
 class ApiRoutes {
 
-    /*
-     * A simple GET to show how to access claims and scopes from the validated JWT
-     */
     fun getData(request: Request, response: Response): String {
 
         val claims = request.attribute<JwtClaims>("principal")
