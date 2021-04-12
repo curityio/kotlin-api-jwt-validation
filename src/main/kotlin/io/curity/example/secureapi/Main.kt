@@ -9,14 +9,14 @@ import spark.Spark.port
  */
 fun main() {
 
-    // Load configuration and configure the Spark port to listen on
+    // Load configuration and set the Spark port to listen on
     val configuration = Configuration()
     port(configuration.getPortNumber())
 
     // Run the OAuth filter before API routes
     val filter = OAuthFilter(configuration)
     before("*") { request, response ->
-        filter.doFilter(request.raw(), response.raw(), null);
+        filter.doFilter(request.raw(), response.raw(), null)
     }
 
     // API routes can then use scopes and claims from the OAuth filter

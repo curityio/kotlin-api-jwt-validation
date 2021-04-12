@@ -23,7 +23,8 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
 
     private val _logger = LoggerFactory.getLogger(OAuthFilter::class.java)
 
-    // Configure to download token signing public keys from the Authorization Server's JWKS endpoint
+    // Point jose4j to the Authorization Server's JWKS endpoint
+    // Token signing keys are then cached and managed in a threadsafe manner
     private val _httpsJkws = HttpsJwks(_configuration.getJwksEndpoint())
     private val _httpsJwksKeyResolver = HttpsJwksVerificationKeyResolver(_httpsJkws)
 
@@ -46,7 +47,7 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
                 return
             }
 
-            // configure the Jose4J library to download JWKS keys and verify the access token
+            // Configure the jose4j library to download JWKS keys and verify the access token
             val jwtConsumer = JwtConsumerBuilder()
                 .setVerificationKeyResolver(_httpsJwksKeyResolver)
                 .setJwsAlgorithmConstraints(
@@ -69,7 +70,7 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
 
             _logger.info("JWT validation failed")
             for (item in e.errorDetails) {
-                _logger.info("${item.errorCode} : ${item.errorMessage}")
+                _logger.debug("${item.errorCode} : ${item.errorMessage}")
             }
 
             this.unauthorizedResponse(httpResponse)
@@ -86,7 +87,7 @@ class OAuthFilter(private val _configuration: Configuration) : Filter {
             val parts = header.split(" ").toTypedArray()
             if (parts.size == 2) {
                 if (parts[0].toLowerCase() == "bearer") {
-                    return parts[1];
+                    return parts[1]
                 }
             }
         }

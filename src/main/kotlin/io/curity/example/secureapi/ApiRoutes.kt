@@ -1,9 +1,9 @@
-package io.curity.example.secureapi;
+package io.curity.example.secureapi
 
 import org.jose4j.jwt.JwtClaims
 import com.google.gson.Gson
-import spark.Request;
-import spark.Response;
+import spark.Request
+import spark.Response
 
 /*
  * API requests are received here once OAuth handling is complete
