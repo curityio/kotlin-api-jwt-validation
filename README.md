@@ -3,8 +3,7 @@
 [![Quality](https://img.shields.io/badge/quality-experiment-red)](https://curity.io/resources/code-examples/status/)
 [![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
 
-A basic sample to show how to use the [jose4j security library](https://bitbucket.org/b_c/jose4j/wiki/Home) for managing validation of OAuth (JWT) access tokens.\
-API routes can then use scopes and claims from the JWT to authorize requests.
+A basic sample to show how to use the [jose4j security library](https://bitbucket.org/b_c/jose4j/wiki/Home) for managing validation of OAuth (JWT) access tokens. API routes can then use scopes and claims from the JWT to authorize requests.
 
 ## Documentation
 
