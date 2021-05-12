@@ -25,7 +25,7 @@
     </repositories>
 
     <build>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
 
             <!-- Support builds to a JAR file via 'mvn package' -->
