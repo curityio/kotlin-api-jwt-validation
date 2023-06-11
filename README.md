@@ -5,10 +5,44 @@
 
 A basic sample to show how to use the [jose4j security library](https://bitbucket.org/b_c/jose4j/wiki/Home) for managing validation of OAuth (JWT) access tokens. API routes can then use scopes and claims from the JWT to authorize requests.
 
-## Documentation
+## Configuration
 
-This repository is documented in the [Kotlin API Tutorial](https://curity.io/resources/learn/kotlin-api/) article on the Curity Web Site.
+The API is configured with these details in its `api.properties` file.\
+Point these to the equivalent values for your own instance of the Curity Identity Server.
 
-## More Information
+```text
+jwks_endpoint=https://idsvr.example.com/oauth/v2/oauth-anonymous/jwks
+issuer=https://idsvr.example.com/oauth/v2/oauth-anonymous
+audience=api.example.com
+```
 
-Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server.
+## Run the API
+
+Ensure that maven and a Java SDK of 17 or higher is installed.
+Then build and run the API with these commands:
+
+```bash
+mvn package
+java -jar target/secureapi-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+## Call the API
+
+Call the running API with an HTTP request such as the following:
+
+```bash
+curl -i http://localhost:3000 -H "Authorization: Bearer eyJraWQiOiIyV01TWGcwekE..."
+```
+
+If the authorization server is configured with the appropriate scopes and claims, a 200 response will be returned:   
+
+```json
+{
+  "message": "API Request has role: admin and scope read"
+}
+```
+
+## Further Information
+
+- See the [Kotlin API Tutorial](https://curity.io/resources/learn/kotlin-api/) for a technical walkthrough
+- Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server

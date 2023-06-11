@@ -41,10 +41,10 @@ class Configuration {
     }
 
     fun getIssuerExpectedClaim(): String {
-        return _properties.getProperty("issuer_claim")
+        return _properties.getProperty("issuer")
     }
 
     fun getAudienceExpectedClaim(): String {
-        return _properties.getProperty("audience_claim")
+        return _properties.getProperty("audience")
     }
 }
