@@ -42,6 +42,12 @@ If the authorization server is configured with the appropriate scopes and claims
 }
 ```
 
+If there is a token validation problem, a 401 response will be returned, with a www-authenticate response header:
+
+```text
+WWW-Authenticate: Bearer, error=invalid_token, error_description=Access token is missing, invalid or expired
+```
+
 ## Further Information
 
 - See the [Kotlin API Tutorial](https://curity.io/resources/learn/kotlin-api/) for a technical walkthrough
