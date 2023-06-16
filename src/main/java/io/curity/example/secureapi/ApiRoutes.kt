@@ -29,7 +29,6 @@ class ApiRoutes {
     fun getData(request: Request, response: Response): String {
 
         val claims = request.attribute<JwtClaims>("principal")
-
         val role = claims.getClaimValueAsString("role")
         val scope = claims.getClaimValueAsString("scope")
 
